@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf8" />
+    <title>Me</title>
+  </head>
+  <body>
+    <h1>Music</h1>
+    <p>Music is science.</p>
+
+    <script>
+      var context;
+      window.addEventListener("load", init, false);
+      function init() {
+        try {
+          context = new AudioContext();
+        } catch (e) {
+          alert("Web Audio API is not supported in this browser");
+        }
+      }
+      var context = new AudioContext();
+
+      function playSound(buffer) {
+        var source = context.createBufferSource(); // creates a sound source
+        source.buffer = buffer; // tell the source which sound to play
+        source.connect(context.destination); // connect the source to the context's destination (the speakers)
+        source.noteOn(0); // play the source now
+      }
+      playSound(300);
+    </script>
+  </body>
+</html>
