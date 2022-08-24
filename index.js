@@ -34,7 +34,7 @@ app.get("/music.html", (req, res) => {
     res.send(html);
   });
 });
-
+app.use("/src", express.static("./src/"));
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(port);
