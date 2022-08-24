@@ -6,27 +6,35 @@
   </head>
   <body>
     <h1>Music</h1>
+    <input type="button" value="play" id="play" />
+    <input type="button" value="stop" id="stop" />
     <p>Music is science.</p>
-
     <script>
-      var context;
-      window.addEventListener("load", init, false);
-      function init() {
-        try {
-          context = new AudioContext();
-        } catch (e) {
-          alert("Web Audio API is not supported in this browser");
+      const audioContext = new AudioContext();
+      const buffer = audioContext.createBuffer(
+        1,
+        audioContext.sampleRate * 1,
+        audioContext.sampleRate
+      );
+      const channelData = buffer.getChannelData(0);
+      for (let i = 0; i < buffer.length; i++) {
+        if (i % 2 == 0) {
+          channelData[i] = Math.random() * 2 - 1;
         }
       }
-      var context = new AudioContext();
+      const whiteNoiseSource = audioContext.createBufferSource();
+      whiteNoiseSource.buffer = buffer;
 
-      function playSound(buffer) {
-        var source = context.createBufferSource(); // creates a sound source
-        source.buffer = buffer; // tell the source which sound to play
-        source.connect(context.destination); // connect the source to the context's destination (the speakers)
-        source.noteOn(0); // play the source now
-      }
-      playSound(300);
+      const primaryGainControl = audioContext.createGain();
+      primaryGainControl.gain.setValueAtTime(0.05, 0);
+
+      whiteNoiseSource.connect(primaryGainControl);
+      primaryGainControl.connect(audioContext.destination);
+
+      const play = document.getElementById("play");
+      play.addEventListener("click", () => {
+        whiteNoiseSource.start();
+      });
     </script>
   </body>
 </html>
