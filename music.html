@@ -3,38 +3,15 @@
   <head>
     <meta charset="utf8" />
     <title>Music</title>
+    <script defer src="src/music.js"></script>
   </head>
   <body>
     <h1>Music</h1>
-    <input type="button" value="play" id="play" />
-    <input type="button" value="stop" id="stop" />
-    <p>Music is science.</p>
-    <script>
-      const audioContext = new AudioContext();
-      const buffer = audioContext.createBuffer(
-        1,
-        audioContext.sampleRate * 1,
-        audioContext.sampleRate
-      );
-      const channelData = buffer.getChannelData(0);
-      for (let i = 0; i < buffer.length; i++) {
-        if (i % 2 == 0) {
-          channelData[i] = Math.random() * 2 - 1;
-        }
-      }
-      const whiteNoiseSource = audioContext.createBufferSource();
-      whiteNoiseSource.buffer = buffer;
-
-      const primaryGainControl = audioContext.createGain();
-      primaryGainControl.gain.setValueAtTime(0.05, 0);
-
-      whiteNoiseSource.connect(primaryGainControl);
-      primaryGainControl.connect(audioContext.destination);
-
-      const play = document.getElementById("play");
-      play.addEventListener("click", () => {
-        whiteNoiseSource.start();
-      });
-    </script>
+    <div>
+      <p>Music is science.</p>
+      <h4>Tone Generator:</h4>
+      <input type="range" min="40" max="2000" value="440" id="pitch" /><br />
+      <input type="button" value="Listen" id="play" />
+    </div>
   </body>
 </html>
