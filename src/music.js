@@ -17,7 +17,7 @@ for (let i = 0; i < buffer.length; i++) {
 const primaryGainControl = audioContext.createGain();
 primaryGainControl.gain.setValueAtTime(0.05, 0);
 primaryGainControl.connect(audioContext.destination);
-const notes = {};
+// const notes = {};
 
 play.addEventListener("click", () => {
   const oscillator = audioContext.createOscillator();
