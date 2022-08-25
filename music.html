@@ -8,10 +8,39 @@
   <body>
     <h1>Music</h1>
     <div>
-      <p>Music is science.</p>
-      <h4>Tone Generator:</h4>
-      <input type="range" min="40" max="2000" value="440" id="pitch" /><br />
+      <h2>Frequency</h2>
+      <p>
+        The fundamentals of music are based on simple physical observations.
+      </p>
+      <p>
+        <b>Definition:</b> Frequency is the rate at which something occurs or is
+        repeated over a particular period of time or in a given sample.
+      </p>
+      <p>
+        In other words, frequency is how fast something vibrates. When an object
+        is vibrating, the air surrounding follows and vibrates against our
+        eardrums resulting in sounds. Generally, we use frequency as the unit to
+        measure the pitch of a sound.
+      </p>
+      <h3>Tone Generator:</h3>
+
+      <input type="range" step="1" min="40" max="2000" value="440" id="pitch" />
+      <p id="display_pitch">Frequency:440</p>
       <input type="button" value="Listen" id="play" />
+    </div>
+    <br />
+    <div>
+      <h2>Harmony</h2>
+
+      <input type="checkbox" class="note" />
+      <label>440</label>
+      <input type="checkbox" class="note" />
+      <label>554.37</label>
+      <input type="checkbox" class="note" />
+      <label>659.25</label>
+      <input type="checkbox" class="note" />
+      <label>880.00</label><br />
+      <input type="button" value="Listen" id="harmony" />
     </div>
   </body>
 </html>
