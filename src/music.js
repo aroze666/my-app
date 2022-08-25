@@ -4,23 +4,13 @@ const frequency = document.getElementById("display_pitch");
 const notes = document.getElementsByClassName("note");
 const harmony = document.getElementById("harmony");
 const audioContext = new AudioContext();
-const buffer = audioContext.createBuffer(
-  1,
-  audioContext.sampleRate * 1,
-  audioContext.sampleRate
-);
-const channelData = buffer.getChannelData(0);
-for (let i = 0; i < buffer.length; i++) {
-  if (i % 2 == 0) {
-    channelData[i] = Math.random() * 2 - 1;
-  }
-}
 
+//volume
 const primaryGainControl = audioContext.createGain();
 primaryGainControl.gain.setValueAtTime(0.05, 0);
 primaryGainControl.connect(audioContext.destination);
-// const notes = {};
 
+//play assigned frequency
 play.addEventListener("click", () => {
   const oscillator = audioContext.createOscillator();
   oscillator.frequency.setValueAtTime(pitch.value, audioContext.currentTime);
@@ -28,13 +18,17 @@ play.addEventListener("click", () => {
   oscillator.start();
   oscillator.stop(audioContext.currentTime + 1);
 });
+
+//update slider value
 pitch.addEventListener("change", () => {
   frequency.innerHTML = "Frequency: " + pitch.value;
 });
 
+//no note will be played by default
 let playNote = [false, false, false, false];
 
-for (let i = 0; i < 4; i++) {
+//check if checkbox is checked
+for (let i = 0; i < notes.length; i++) {
   notes[i].addEventListener("change", (e) => {
     if (e.target.checked) {
       playNote[i] = true;
@@ -44,8 +38,9 @@ for (let i = 0; i < 4; i++) {
   });
 }
 
+//check which checkboxes are checked when play requested
 harmony.addEventListener("click", () => {
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < notes.length; i++) {
     if (playNote[i]) {
       const oscillator = audioContext.createOscillator();
       oscillator.frequency.setValueAtTime(
@@ -59,15 +54,24 @@ harmony.addEventListener("click", () => {
   }
 });
 
+//return pitch by checkboxes
 function playPitch(num) {
   switch (num) {
     case 0:
       return 440;
     case 1:
-      return 554.37;
-    case 2:
-      return 659.25;
-    case 3:
       return 880;
+    case 2:
+      return 660;
+    case 3:
+      return 586.67;
+    case 4:
+      return 733.33;
+    case 5:
+      return 550;
+    case 6:
+      return 704;
+    case 7:
+      return 528;
   }
 }

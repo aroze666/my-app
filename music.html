@@ -7,40 +7,106 @@
   </head>
   <body>
     <h1>Music</h1>
+    <p name="disclaimer">
+      (This is my understanding of music, it can be very subjective or simply
+      wrong)
+    </p>
     <div>
       <h2>Frequency</h2>
       <p>
-        The fundamentals of music are based on simple physical observations.
-      </p>
-      <p>
+        The fundamentals of music are based on simple physical observations.<br />
         <b>Definition:</b> Frequency is the rate at which something occurs or is
-        repeated over a particular period of time or in a given sample.
+        repeated over a particular period of time or in a given sample. <br />In
+        other words, frequency is how fast something vibrates. When an object is
+        vibrating, the air surrounding follows and vibrates against our eardrums
+        resulting in sounds. Generally, we use frequency as the unit to measure
+        the pitch of a sound.
       </p>
-      <p>
-        In other words, frequency is how fast something vibrates. When an object
-        is vibrating, the air surrounding follows and vibrates against our
-        eardrums resulting in sounds. Generally, we use frequency as the unit to
-        measure the pitch of a sound.
-      </p>
-      <h3>Tone Generator:</h3>
-
-      <input type="range" step="1" min="40" max="2000" value="440" id="pitch" />
-      <p id="display_pitch">Frequency:440</p>
-      <input type="button" value="Listen" id="play" />
+      <div name="toneGenerator">
+        <h3>Tone Generator:</h3>
+        <input
+          type="range"
+          step="1"
+          min="40"
+          max="2000"
+          value="440"
+          id="pitch"
+        />
+        <p id="display_pitch">Frequency:440</p>
+        <input type="button" value="Listen" id="play" />
+      </div>
     </div>
     <br />
     <div>
+      <h2>Scale (intro)</h2>
+      <p>
+        Perhaps you are familiar with the sequence of sounds: do re mi fa so la
+        ti do.
+        <br />This is an example of scale. It is called a major scale in music
+        theory. To understand how scale is constructed, we also need to know
+        about different tuning systems and their origins.
+      </p>
+    </div>
+    <div>
+      <h2>Tuning</h2>
+    </div>
+    <div>
+      <h2>Harmonic Series</h2>
+    </div>
+    <div>
       <h2>Harmony</h2>
+      <p>
+        In short, harmony is when many sounds are well combined and played at
+        the same time. <br />
+      </p>
+      <div name="pitchRatioList">
+        Here is a list of common ratios for two sounds and given frequency
+        example in parentheses.
+        <ui>
+          <li>1:1 unison. (440, 440)</li>
+          <li>2:1 octave. (440, 880)</li>
+          <li>3:2 perfect fifth. (440, 660)</li>
+          <li>4:3 perfect fourth. (440, 586.67)</li>
+          <li>5:3 major sixth. (440, 733.33)</li>
+          <li>5:4 major third. (440, 550)</li>
+          <li>8:5 minor sixth. (440, 704)</li>
+          <li>6:5 minor third. (440, 528)</li>
+        </ui>
+      </div>
+      <p>
+        For example if one of our frequency is 440. then 2:1 will be 440 and 880
+        playing at the same time. In music theory, chords are constructed using
+        the ratios above, but a chord usually contain three or more sounds.
+      </p>
+      <div>
+        <h3>Chord explained</h3>
+        <p>if we look at the ratio above</p>
+      </div>
 
-      <input type="checkbox" class="note" />
-      <label>440</label>
-      <input type="checkbox" class="note" />
-      <label>554.37</label>
-      <input type="checkbox" class="note" />
-      <label>659.25</label>
-      <input type="checkbox" class="note" />
-      <label>880.00</label><br />
-      <input type="button" value="Listen" id="harmony" />
+      <div>
+        <h3>Chords Generator</h3>
+        <input type="checkbox" class="note" />
+        <label>440</label>
+        <input type="checkbox" class="note" />
+        <label>880</label>
+        <input type="checkbox" class="note" />
+        <label>660</label>
+        <input type="checkbox" class="note" />
+        <label>586.67</label>
+        <input type="checkbox" class="note" />
+        <label>733.33</label>
+        <input type="checkbox" class="note" />
+        <label>550</label>
+        <input type="checkbox" class="note" />
+        <label>704</label>
+        <input type="checkbox" class="note" />
+        <label>528</label>
+        <input type="button" value="Listen" id="harmony" />
+      </div>
+    </div>
+
+    <div>
+      <h2>Timbre</h2>
     </div>
   </body>
 </html>
